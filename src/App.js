@@ -1,24 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
+  const [quoteText, setQuoteText] = useState("");
+  const [quoteAuthor, setQuoteAuthor] = useState("");
+
+  useEffect(() => {
+    // Get quote on load
+    if (!quoteText && !quoteAuthor) getQuote();
+  });
+
+  async function getQuote() {
+    const result = await fetch(
+      "https://programming-quotes-api.herokuapp.com/quotes/random",
+      {
+        method: "GET"
+      }
+    );
+    result
+      .json()
+      .then(response => {
+        setQuoteText(response.en);
+        setQuoteAuthor(response.author);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main id="quote-box">
+        <section className="quote">
+          <p id="text">{quoteText}</p>
+          <span id="author">{quoteAuthor}</span>
+        </section>
+        <section>
+          <button id="new-quote" onClick={() => getQuote()}>
+            New Quote
+          </button>
+          <a
+            id="tweet-quote"
+            href={encodeURI(
+              'https://twitter.com/intent/tweet?text="' +
+                quoteText +
+                '"  - ' +
+                quoteAuthor
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Tweet quote
+          </a>
+        </section>
+      </main>
     </div>
   );
 }
