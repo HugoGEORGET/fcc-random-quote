@@ -1,3 +1,90 @@
+html,
+body {
+  background: #f4fff3;
+}
+
 .App {
   text-align: center;
+}
+
+.quote {
+  font-family: "EB Garamond";
+  font-size: 32px;
+  line-height: 1.4rem;
+  height: 100%;
+  padding: 0.5rem;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  color: #1a222f;
+  margin: 4.5rem auto 0;
+  width: 17em;
+  border-bottom: 2px dotted #c6d1bf;
+  padding-bottom: 0.5rem;
+}
+
+p {
+  line-height: 1.4em;
+}
+
+#text {
+  position: relative;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.5rem;
+}
+
+#text::before {
+  content: "“";
+  left: -0.7em;
+}
+
+#text::after {
+  content: "”";
+  margin-right: -1rem;
+}
+
+#author {
+  font-family: "Open Sans Condensed";
+  font-size: 0.8rem;
+  text-align: right;
+  font-weight: 300;
+}
+
+.quote-options {
+  margin-top: 3rem;
+}
+
+#new-quote {
+  margin-right: 10rem;
+}
+
+#tweet-quote {
+  color: #000000;
+  text-decoration: none;
+}
+
+.quote-button {
+  background-color: transparent;
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #000000;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #000000;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.quote-button:hover {
+  color: #ffffff;
+  background-color: #000000;
+}
+@media all and (max-width: 30em) {
+  .quote-button {
+    display: block;
+    margin: 0.4em auto;
+  }
 }

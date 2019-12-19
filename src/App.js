@@ -35,8 +35,12 @@ function App() {
           <p id="text">{quoteText}</p>
           <span id="author">{quoteAuthor}</span>
         </section>
-        <section>
-          <button id="new-quote" onClick={() => getQuote()}>
+        <section className="quote-options">
+          <button
+            id="new-quote"
+            className="quote-button"
+            onClick={() => getQuote()}
+          >
             New Quote
           </button>
           <a
